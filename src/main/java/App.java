@@ -5,6 +5,7 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 public class App {
     public static void main(String[] args) {
+        /*
         try {
             TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
             telegramBotsApi.registerBot(new Bot());
@@ -13,5 +14,9 @@ public class App {
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
+
+         */
+        WeatherInfo weatherInfo = new WeatherInfo("Kyiv");
+        System.out.println(weatherInfo.getWeatherForecast());
     }
 }
