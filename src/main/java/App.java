@@ -17,6 +17,7 @@ public class App {
 
          */
         WeatherInfo weatherInfo = new WeatherInfo("Kyiv");
-        System.out.println(weatherInfo.getWeatherForecast());
+        weatherInfo.getWeatherForecastOnJSON();
+        weatherInfo.getDailyForecast();
     }
 }
