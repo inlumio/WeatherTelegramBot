@@ -1,8 +1,3 @@
-import org.telegram.telegrambots.meta.TelegramBotsApi;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
-import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
-
 public class App {
     public static void main(String[] args) {
         /*
@@ -16,8 +11,8 @@ public class App {
         }
 
          */
-        WeatherInfo weatherInfo = new WeatherInfo("Kyiv");
-        weatherInfo.getWeatherForecastOnJSON();
-        weatherInfo.getDailyForecast();
+        WeatherInfo weatherInfo = new WeatherInfo("Lviv");
+        System.out.println(weatherInfo.getDailyForecast());
+
     }
 }
