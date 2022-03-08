@@ -3,9 +3,8 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.util.logging.Level;
-
 public class Bot extends TelegramLongPollingBot {
+
     @Override
     public String getBotUsername() {
         return "VPWeatherBot";
@@ -18,8 +17,16 @@ public class Bot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        String message = update.getMessage().getText();
-        sendMsg(update.getMessage().getChatId().toString(), message);
+        if (update.hasMessage() && update.getMessage().hasText()) {
+            String inputMessage = update.getMessage().getText();
+            String recipient = update.getMessage().getChatId().toString();
+            if (inputMessage.equals("/start")) {
+                sendMsg(recipient, "Greetings!!! I'm Weather Bot. Enter the city name, and I'll show You the its daily weather forecast");
+            } else {
+                WeatherInfo weatherInfo = new WeatherInfo(inputMessage);
+                sendMsg(recipient, weatherInfo.getDailyForecast());
+            }
+        }
     }
 
     public synchronized void sendMsg(String chatId, String s) {
